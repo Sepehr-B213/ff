@@ -1,0 +1,94 @@
+import java.util.*;
+public class Rond {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int i = 0;
+        int length = input.nextInt();
+        String [] number = new String[length];
+        for (i = 0; i < length; i++) {
+            number[i] = input.next();
+        }
+        for(i = 0; i < length; i++) {
+            if(shart1(number[i]) || shart2(number[i]) || shart3(number[i])) {
+                System.out.print("Ronde!\n");
+            }
+            else {
+                System.out.print("Rond Nist\n");
+            }
+
+        }
+
+
+    }
+    public static boolean shart1(String shart){
+        boolean ronde = false;
+        int[] Adade = new int[10] ;
+        for (int i =0 ; i<8 ; i++) {
+            switch (shart.charAt(i)) {
+                case '1' : Adade[1]++ ;
+                    break;
+                case '2' : Adade[2]++ ;
+                    break;
+                case '3' : Adade[3]++ ;
+                    break;
+                case '4' : Adade[4]++ ;
+                    break;
+                case '5' : Adade[5]++ ;
+                    break;
+                case '6' : Adade[6]++ ;
+                    break;
+                case '7' : Adade[7]++ ;
+                    break;
+                case '8' : Adade[8]++ ;
+                    break;
+                case '9' : Adade[9]++ ;
+                    break;
+                case '0' : Adade[0]++ ;
+                    break;
+
+            }
+        }
+        for (int i=0 ; i<10 ; i++) {
+            if (Adade[i] >=4 ) {
+                ronde = true;
+                break;
+            }
+        }
+        return ronde;
+    }
+    public static boolean shart2(String shart) {
+        boolean ronde = false;
+        int count = 1;
+        for(int i = 1; i < shart.length(); i++) {
+            if(shart.charAt(i) == shart.charAt(i-1)){
+                count++;
+            }
+            else {
+                count = 1;
+            }
+            if(count >= 3) {
+                ronde = true;
+                break;
+            }
+            else {
+                ronde = false;
+            }
+        }
+        return ronde;
+
+    }
+    public static boolean shart3(String shart) {
+        boolean ronde = false;
+        if(shart.charAt(0) == shart.charAt(7) && shart.charAt(1) == shart.charAt(6) && shart.charAt(2) == shart.charAt(5) && shart.charAt(3) == shart.charAt(4)) {
+            ronde = true;
+        }
+        else{
+            ronde = false;
+        }
+        return ronde;
+
+    }
+
+
+}
